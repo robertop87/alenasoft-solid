@@ -1,6 +1,6 @@
 package edu.alenasoft.lsp;
 
-public class Rectangle {
+public class Rectangle implements Shape {
 
   private int width;
   private int height;
@@ -13,14 +13,7 @@ public class Rectangle {
     this.height = height;
   }
 
-  public int getWidth() {
-    return this.width;
-  }
-
-  public int getHeight() {
-    return this.height;
-  }
-
+  @Override
   public int calculateArea() {
     return this.width *  this.height;
   }

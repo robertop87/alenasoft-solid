@@ -8,13 +8,16 @@ public class LspClient {
     rectangle.setWidth(10);
 
     System.out.println("--- Rectangle ---");
-    System.out.println(rectangle.calculateArea());
+    showArea(rectangle);
 
-    Rectangle square = new Square();
-    //square.setHeight(10);
+    Square square = new Square();
+    square.setSize(15);
 
-    square.setWidth(5);
+    System.out.println("--- Square ---");
+    showArea(square);
+  }
 
-    System.out.println(square.calculateArea());
+  public static void showArea(Shape shape) {
+    System.out.println(shape.calculateArea());
   }
 }
