@@ -14,5 +14,9 @@ public class OcpClient {
     // Circle
     Circle circle = new Circle(8);
     System.out.println("Circle area " + circle.calculateArea());
+
+    // Triangle
+    Triangle triangle = new Triangle(85);
+    System.out.println("Triangle area " + triangle.calculateArea());
   }
 }
