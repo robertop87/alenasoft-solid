@@ -10,5 +10,9 @@ public class OcpClient {
     // Square
     Square square = new Square(10);
     System.out.println("Square area " + square.calculateArea());
+
+    // Circle
+    Circle circle = new Circle(8);
+    System.out.println("Circle area " + circle.calculateArea());
   }
 }

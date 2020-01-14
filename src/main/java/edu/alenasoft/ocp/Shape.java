@@ -14,6 +14,8 @@ public class Shape {
         return ((Square) this).getSize() * ((Square) this).getSize();
       case RECTANGLE:
         return ((Rectangle) this).getWidth() * ((Rectangle) this).getHeight();
+      case CIRCLE:
+        return Math.PI * (((Circle) this).getRadius() * ((Circle) this).getRadius());
       default: return 0d;
     }
   }

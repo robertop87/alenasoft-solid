@@ -1,6 +1,7 @@
 package edu.alenasoft.ocp;
 
-public enum  ShapeType {
+public enum ShapeType {
   SQUARE,
-  RECTANGLE
+  RECTANGLE,
+  CIRCLE
 }
