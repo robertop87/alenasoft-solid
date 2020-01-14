@@ -1,0 +1,14 @@
+package edu.alenasoft.ocp;
+
+public class OcpClient {
+
+  public static void main(String[] args) {
+    // Rectangle
+    Rectangle rectangle = new Rectangle(15, 10);
+    System.out.println("Rectangle area " + rectangle.calculateArea());
+
+    // Square
+    Square square = new Square(10);
+    System.out.println("Square area " + square.calculateArea());
+  }
+}
