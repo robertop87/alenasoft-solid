@@ -1,15 +1,19 @@
 package edu.alenasoft.ocp;
 
-public class Circle extends Shape {
+public class Circle implements Areable {
 
   private double radius;
 
   public Circle(double radius) {
-    super(ShapeType.CIRCLE);
     this.radius = radius;
   }
 
   public double getRadius() {
     return radius;
+  }
+
+  @Override
+  public double calculateArea() {
+    return Math.PI * this.radius * this.radius;
   }
 }

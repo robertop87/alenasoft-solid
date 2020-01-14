@@ -1,15 +1,19 @@
 package edu.alenasoft.ocp;
 
-public class Square extends Shape {
+public class Square implements Areable {
 
   private double size;
 
   public Square(double size) {
-    super(ShapeType.SQUARE);
     this.size = size;
   }
 
   public double getSize() {
     return size;
+  }
+
+  @Override
+  public double calculateArea() {
+    return this.size * this.size;
   }
 }

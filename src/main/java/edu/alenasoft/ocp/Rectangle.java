@@ -1,13 +1,12 @@
 package edu.alenasoft.ocp;
 
-public class Rectangle extends Shape {
+public class Rectangle implements Areable {
 
   private int width;
 
   private int height;
 
   public Rectangle(int width, int height) {
-    super(ShapeType.RECTANGLE);
     this.width = width;
     this.height = height;
   }
@@ -18,5 +17,10 @@ public class Rectangle extends Shape {
 
   public int getHeight() {
     return height;
+  }
+
+  @Override
+  public double calculateArea() {
+    return this.height *  this.width;
   }
 }
