@@ -23,4 +23,12 @@ public class Rectangle implements Areable {
   public double calculateArea() {
     return this.height *  this.width;
   }
+
+  @Override
+  public String toString() {
+    return "Rectangle{" +
+        "width=" + width +
+        ", height=" + height +
+        '}';
+  }
 }
