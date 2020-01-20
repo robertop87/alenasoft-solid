@@ -6,8 +6,6 @@ import java.util.List;
 public class GildedRose {
 
   public static List<Item> items = new ArrayList<>();
-  static final int MAX_QUALITY = 50;
-  static final int MIN_QUALITY = 0;
 
   public static void main(String[] args) {
 
@@ -27,58 +25,27 @@ public class GildedRose {
 
   public static void updateQuality() {
     for (int i = 0; i < items.size(); i++) {
-      updateItem(items.get(i));
+      updateItem(items.get(i)).update(items.get(i));
     }
   }
 
-  public static void updateItem(Item item) {
-      if ((!"Aged Brie".equals(item.getName()))
-          && !"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-        if (item.getQuality() > MIN_QUALITY) {
-          if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-            item.setQuality(item.getQuality() - 1);
-          }
-        }
-      } else {
-        if (item.getQuality() < MAX_QUALITY) {
-          item.setQuality(item.getQuality() + 1);
+  public static ItemUpdater updateItem(Item item) {
+      if (improvesOverTime(item)) return new ImproveOverTimeUpdater();
+      if (isLegendary(item)) return new LegendaryUpdater();
+      if (isBackstagePasses(item)) return new BackstagePassesUpdater();
 
-          if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            if (item.getSellIn() < 11) {
-              if (item.getQuality() < MAX_QUALITY) {
-                item.setQuality(item.getQuality() + 1);
-              }
-            }
+      return new CommonUpdater();
+  }
 
-            if (item.getSellIn() < 6) {
-              if (item.getQuality() < MAX_QUALITY) {
-                item.setQuality(item.getQuality() + 1);
-              }
-            }
-          }
-        }
-      }
+  private static boolean isBackstagePasses(Item item) {
+    return item.getName().contains("Backstage");
+  }
 
-      if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-        item.setSellIn(item.getSellIn() - 1);
-      }
+  private static boolean improvesOverTime(Item item) {
+    return item.getName().contains("Aged Brie");
+  }
 
-      if (item.getSellIn() < MIN_QUALITY) {
-        if (!"Aged Brie".equals(item.getName())) {
-          if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            if (item.getQuality() > MIN_QUALITY) {
-              if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                item.setQuality(item.getQuality() - 1);
-              }
-            }
-          } else {
-            item.setQuality(item.getQuality() - item.getQuality());
-          }
-        } else {
-          if (item.getQuality() < MAX_QUALITY) {
-            item.setQuality(item.getQuality() + 1);
-          }
-        }
-      }
+  private static boolean isLegendary(Item item) {
+    return item.getName().contains("Sulfuras");
   }
 }
