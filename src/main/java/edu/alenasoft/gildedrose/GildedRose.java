@@ -5,7 +5,11 @@ import java.util.List;
 
 public class GildedRose {
 
-  private static List<Item> items = new ArrayList<>();
+  public static List<Item> items = new ArrayList<>();
+
+  private static final String AGED = "Aged Brie";
+  private static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+  private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
   public static void main(String[] args) {
 
@@ -23,26 +27,28 @@ public class GildedRose {
     System.out.println(items);
   }
 
-  private static void updateQuality() {
+  public static void updateQuality() {
     for (Item item : items) {
-      if (!item.getName().equals("Aged Brie") && !item.getName().equals("Backstage passes to a TAFKAL80ETC concert")
-              && !item.getName().equals("Sulfuras, Hand of Ragnaros") && item.getQuality() > 0) {
+      if ((!AGED.equals(item.getName())) && !BACKSTAGE.equals(item.getName()) && item.getQuality() > 0 && !SULFURAS.equals(item.getName())) {
         item.setQuality(item.getQuality() - 1);
       } else
       if (item.getQuality() < 50) {
         item.setQuality(item.getQuality() + 1);
-        if (item.getName().equals("Backstage passes to a TAFKAL80ETC concert") && item.getSellIn() < 11 && item.getQuality() < 50) {
+
+        if (BACKSTAGE.equals(item.getName()) && item.getSellIn() < 11) {
           item.setQuality(item.getQuality() + 1);
+          if (item.getSellIn() < 6) {
+            item.setQuality(item.getQuality() + 1);
+          }
         }
       }
 
-      if (!item.getName().equals("Sulfuras, Hand of Ragnaros")) {
+      if (!SULFURAS.equals(item.getName())) {
         item.setSellIn(item.getSellIn() - 1);
       }
 
-      if (item.getSellIn() < 0 && !item.getName().equals("Aged Brie")) {
-        if (!item.getName().equals("Backstage passes to a TAFKAL80ETC concert") && item.getQuality() > 0
-                && !item.getName().equals("Sulfuras, Hand of Ragnaros")) {
+      if (item.getSellIn() < 0) {
+        if (!BACKSTAGE.equals(item.getName()) && item.getQuality() > 0 && !SULFURAS.equals(item.getName()) && !AGED.equals(item.getName())) {
           item.setQuality(item.getQuality() - 1);
         } else {
           item.setQuality(0);

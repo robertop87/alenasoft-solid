@@ -21,3 +21,9 @@ los nombres de rosas y hacer referencia a ellos a travez de un key, en lugar de 
 
 8.- Creo que como la mayoria de los metodos llaman al setQuality o setSellIn, se podria crear dos metodos que hagan eso
 y solo referenciarlos a ellos apropadamente.
+
+9.- Los principios solid que no se respetaron son:
+
+a) Principio de responsabilidad simple
+
+adicionalmente esta implementacion tiene una baja cohesion y un altisimo acoplamiento, lo cual dificulta nuevos cambios
